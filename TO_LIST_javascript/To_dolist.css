@@ -1,0 +1,126 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.whole {
+    background-color: #fff;
+    padding: 30px 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.whole h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ff6b6b;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+
+#todolist, .edit-input {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 2px solid #fcb69f;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#todolist:focus, .edit-input:focus {
+    border-color: #ff6b6b;
+}
+
+button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+#todolist {
+  display: inline-block;
+  width: 70%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #fcb69f;
+  border-radius: 8px;
+  outline: none;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.task-item {
+    background-color: #fff0e1;
+    border: 1px solid #fcb69f;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.3s ease;
+}
+
+.task-item:hover {
+    background-color: #ffe3d4;
+}
+
+
+.task-text {
+    flex-grow: 1;
+    font-size: 16px;
+    color: #333;
+    margin-right: 10px;
+    word-break: break-word;
+}
+
+
+.btn-container {
+    display: flex;
+    gap: 8px;
+}
+
+.edit-btn {
+    background-color: #ffd93d;
+    color: #000;
+}
+
+.delete-btn {
+    background-color: #ff6b6b;
+    color: white;
+}
+.task-checkbox {
+    margin-right: 10px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #999;
+}
