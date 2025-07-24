@@ -1,35 +1,72 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import TodoItem from './components/TodoItem';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+interface Todo {
+  id: number;
+  task: string;
+  isEditing: boolean;
 }
 
-export default App
+function App() {
+  const [todos, setTodos] = useState<Todo[]>([]);
+  const [task, setTask] = useState('');
+
+  const addTodo = () => {
+    if (!task.trim()) return;
+    const newTodo: Todo = {
+      id: Date.now(),
+      task,
+      isEditing: false,
+    };
+    setTodos([...todos, newTodo]);
+    setTask('');
+  };
+
+  const deleteTodo = (id: number) => {
+    setTodos(todos.filter(todo => todo.id !== id));
+  };
+
+  const toggleEdit = (id: number) => {
+    setTodos(
+      todos.map(todo =>
+        todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
+      )
+    );
+  };
+
+  const editTodo = (id: number, newTask: string) => {
+    setTodos(
+      todos.map(todo =>
+        todo.id === id ? { ...todo, task: newTask, isEditing: false } : todo
+      )
+    );
+  };
+
+  return (
+    <div className="app">
+      <h1>Todo List</h1>
+      <div className="input-container">
+        <input
+          value={task}
+          onChange={e => setTask(e.target.value)}
+          placeholder="Enter task..."
+        />
+        <button onClick={addTodo}>Add</button>
+      </div>
+      <ul>
+        {todos.map(todo => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            onDelete={deleteTodo}
+            onToggleEdit={toggleEdit}
+            onEdit={editTodo}
+          />
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default App;
