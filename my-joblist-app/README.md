@@ -9,6 +9,7 @@ This is a modern job listing application built with **Next.js 14**, **React**, *
 - ✅ Category and skill tags with color-coded badges
 - ✅ Responsive design using Tailwind CSS
 - ✅ State management using Redux Toolkit
+- ✅ 🔐 User authentication with email verification and Google OAuth
 
 ## 📸 Screenshots
 
@@ -26,13 +27,65 @@ This is a modern job listing application built with **Next.js 14**, **React**, *
 
 ---
 
+### 🔐 Authentication Pages (Screenshots)
+> _User authentication flow with validation and email OTP verification._
+
+- **📝 Sign Up**
+  ![Sign Up](./screenshots/signup.png)
+
+- **📧 Verify Email**
+  ![Verify Email](./screenshots/verify-email.png)
+
+- **🔓 Sign In**
+  ![Sign In](./screenshots/login.png)
+
+- **⚠️ Input Validation**
+  ![Validation](./screenshots/validation.png)
+
+---
+
 ## ⚙️ Tech Stack
 
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **State Management**: [Redux Toolkit](https://redux-toolkit.js.org/)
 - **Data Fetching**: `axios`
+- **Authentication**: Custom backend + NextAuth (for Google OAuth)
 
+---
+
+## 🔐 User Authentication
+
+This app includes a secure user authentication system with full flow from registration to login.
+
+### ✅ Sign Up
+- Name, Email, Password, Confirm Password fields
+- Form validation: required fields, email format, password match
+- Sends OTP to email for verification
+- Redirects to email verification page after signup
+
+### 🔐 Email Verification
+- User enters 4-digit OTP received via email
+- Auto-focus between OTP input boxes
+- Timer to resend OTP after 30 seconds
+- Fails gracefully if OTP is incorrect
+
+### 🔓 Sign In
+- Email + password based login
+- Redirects to dashboard after successful login
+- Handles login failure with error messages
+
+### 🌐 Google OAuth Login
+- Uses NextAuth to allow Google-based login
+- Redirects to dashboard on success
+
+### 🚨 Input Validation
+- Realtime client-side form validation:
+  - Required fields
+  - Valid email format
+  - Password confirmation check
+
+---
 
 ## 🛠️ Getting Started
 
@@ -40,10 +93,3 @@ This is a modern job listing application built with **Next.js 14**, **React**, *
    ```bash
    git clone https://github.com/nebutty/A2SV_WEBTRACK.git
    cd job-listing-app
-
-npm install
-npm run dev
-
-
-
-

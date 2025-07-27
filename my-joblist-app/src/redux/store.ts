@@ -1,4 +1,4 @@
-// src/redux/store.ts
+// redux/store.ts
 import { configureStore } from '@reduxjs/toolkit';
 import opportunitiesReducer from './opportunitiesSlice';
 

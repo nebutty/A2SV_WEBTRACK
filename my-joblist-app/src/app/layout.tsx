@@ -1,14 +1,8 @@
-
-import type { Metadata } from "next";
-import { Providers } from '@/redux/Provider';
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ReactNode } from "react";
+import Providers from "@/redux/Provider"; // ✅ <- This file is now client
+import { Geist, Geist_Mono } from "next/font/google";
 
-// ✅ Redux
-import { Provider } from "react-redux";
-import { store } from "@/redux/store";
-
-// ✅ Fonts
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -19,17 +13,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// ✅ App Metadata
-export const metadata: Metadata = {
+export const metadata = {
   title: "Opportunities Board",
   description: "Powered by Next.js and Redux Toolkit",
 };
 
-// ✅ Root Layout
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className="bg-white text-gray-900 font-sans">
         <Providers>{children}</Providers>
       </body>
     </html>
