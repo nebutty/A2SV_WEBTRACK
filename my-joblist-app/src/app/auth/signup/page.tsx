@@ -30,6 +30,7 @@ export default function SignUp() {
     const data = await res.json();
 
     if (!res.ok) {
+      console.log('Token:', data.token); 
       setError(data.message || "Signup failed");
     } else {
       alert("OTP sent to your email");

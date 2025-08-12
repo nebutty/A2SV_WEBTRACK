@@ -10,6 +10,7 @@ This is a modern job listing application built with **Next.js 14**, **React**, *
 - ✅ Responsive design using Tailwind CSS
 - ✅ State management using Redux Toolkit
 - ✅ 🔐 User authentication with email verification and Google OAuth
+- ✅ Testing using cypress and jest
 
 ## 📸 Screenshots
 
@@ -43,7 +44,41 @@ This is a modern job listing application built with **Next.js 14**, **React**, *
   ![Validation](./screenshots/validation.png)
 
 ---
+### Testing
+### 1️⃣ **Bookmark a Job**
+- Logs in via backend API.
+- Visits the dashboard and bookmarks the first job card.
+- Confirms via `GET /bookmarks` that the job ID is stored in the backend.
 
+**Screenshot:**  
+![Bookmark Job](./screenshots/test-bookmark.png)
+
+---
+
+### 2️⃣ **Keep Bookmark Visible After Reload**
+- Reloads the dashboard page.
+- Checks that the bookmark icon for the previously bookmarked job remains visible after refresh.
+
+**Screenshot:**  
+![Bookmark After Reload](./screenshots/bookmark-reload.png)
+
+---
+
+### 3️⃣ **Remove (Unbookmark) a Job**
+- Ensures a job is currently bookmarked (verified via backend API).
+- Clicks the bookmark button to unbookmark it.
+- Polls `GET /bookmarks` until the job ID is no longer present in the backend.
+
+**Screenshots:**
+- _When Marked:_  
+  ![Remove When Marked](./screenshots/remove-marked.png)
+- _After Unmarked:_  
+  ![After Unmarked](./screenshots/remove-unmarked.png)
+## ▶️ Running Tests
+
+### Run Cypress E2E Tests:
+```bash
+npx cypress open
 ## ⚙️ Tech Stack
 
 - **Framework**: [Next.js](https://nextjs.org/)

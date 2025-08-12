@@ -21,8 +21,11 @@ export default function Login() {
     });
 
     const data = await res.json();
+    console.log('Login response:', data); // Keep this for now
+console.log('Token:', data.data.accessToken); 
     if (res.ok) {
-      localStorage.setItem("token", data.token);
+      console.log('Token:', data.data.accessToken);
+      localStorage.setItem("token", data.data.accessToken);
       router.push("/dashboard");
     } else setError(data.message || "Login failed");
   };
